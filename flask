@@ -1,0 +1,16 @@
+#!/bin/bash
+
+use python
+
+serve() {
+  .venv/bin/python app.py
+}
+
+genpass() {
+  python3 -c "from werkzeug.security import generate_password_hash; import sys; print(generate_password_hash(sys.argv[1]))" "$1"
+}
+
+format() {
+  super
+  djlint . --reformat
+}

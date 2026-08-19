@@ -1,0 +1,11 @@
+#!/bin/bash
+
+setup() {
+  npm i
+}
+
+if has prettier; then
+  format() {
+    prettier --write .
+  }
+fi

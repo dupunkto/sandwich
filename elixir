@@ -1,0 +1,36 @@
+#!/bin/bash
+
+setup() {
+	mix deps.get
+	mix deps.compile
+}
+
+build() {
+	mix compile
+}
+
+format() {
+	mix format
+}
+
+if [ -f test/test_helper.exs ]; then
+  test() {
+  	mix test
+  }
+fi
+
+if grep -q 'ex_check' mix.exs; then
+	check() {
+	  mix check --no-retry
+	}
+fi
+
+publish() {
+	mix docs
+	lift deploy docs
+}
+
+release() {
+	mix hex.publish
+}
+
