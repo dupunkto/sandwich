@@ -13,5 +13,8 @@ if [ -f composer.json ]; then
     required composer
     composer install
   }
-fi
 
+  clean() {
+    rm -rf vendor
+  }
+fi
